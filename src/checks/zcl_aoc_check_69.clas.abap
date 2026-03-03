@@ -219,6 +219,10 @@ CLASS zcl_aoc_check_69 IMPLEMENTATION.
 
     IF object_type = 'WDYN'.
       RETURN. " todo, WDYN
+    "20230808/AFIS - Prüfung für ADOBE Forms funktioniert nicht
+    "  Es gibt jeweils den Fehler "Unable to resolve ..."
+    ELSEIF object_type = 'SFPF'.
+      RETURN. " todo, SFPF
     ELSEIF object_type = 'PROG'.
       SELECT SINGLE subc FROM reposrc INTO lv_subc
         WHERE progname = object_name AND r3state = 'A'.

@@ -116,6 +116,22 @@ CLASS zcl_aoc_check_89 IMPLEMENTATION.
       lv_objtype = 'RE'.
     ENDIF.
 
+    "20230802/AFIS - Für Funktionsgruppen wurde die Doku nicht gefunden
+    IF iv_obj_type = 'FUGR'.
+      lv_objtype = 'RE'.
+      lv_objname = |SAPL{ lv_objname }|.
+    ENDIF.
+
+    "20230802/AFIS - Für Interfaces wurde die Doku nicht gefunden
+    IF iv_obj_type = 'INTF'.
+      lv_objtype = 'IF'.
+    ENDIF.
+
+    "20230808/AFIS - Für ADOBE Forms wurde die Doku nicht gefunden
+    IF iv_obj_type = 'SFPF'.
+      lv_objtype = 'AD'.
+    ENDIF.
+
     "function module already exists in 7.02 -> should work on every satellite system
     CALL FUNCTION 'ZAOC_OBJ_DOKU_GET_XSTRING_RFC'
       DESTINATION lv_destination
